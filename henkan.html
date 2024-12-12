@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>文字変換ツール</title>
+    <!-- Google Fonts から「Baloo 2」という丸みを帯びたポップなフォントを読み込む -->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"> <!-- 外部 CSS ファイルをリンク -->
 </head>
 <body>
     <h1>文字変換ツール</h1>
@@ -11,6 +14,8 @@
     <button onclick="convertText()">変換</button>
     <h2>変換結果</h2>
     <div id="outputText"></div>
+    <button class="copy-button" onclick="copyText()">コピー</button>
+    <div id="notification" class="notification">コピーしました！</div>
 
     <script>
         function convertText() {
@@ -21,6 +26,18 @@
             }
             document.getElementById('outputText').innerText = outputText;
         }
+
+        function copyText() {
+            const outputText = document.getElementById('outputText').innerText;
+            navigator.clipboard.writeText(outputText).then(() => {
+                const notification = document.getElementById('notification');
+                notification.style.display = 'block';
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 2000);
+            });
+        }
     </script>
 </body>
 </html>
+
