@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字変換ツール</title>
+</head>
+<body>
+    <h1>文字変換ツール</h1>
+    <textarea id="inputText" rows="4" cols="50" placeholder="ここにテキストを入力"></textarea><br>
+    <button onclick="convertText()">変換</button>
+    <h2>変換結果</h2>
+    <div id="outputText"></div>
+
+    <script>
+        function convertText() {
+            const inputText = document.getElementById('inputText').value;
+            let outputText = '';
+            for (let char of inputText) {
+                outputText += `||${char}||`;
+            }
+            document.getElementById('outputText').innerText = outputText;
+        }
+    </script>
+</body>
+</html>
